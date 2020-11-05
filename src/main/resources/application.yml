@@ -1,28 +1,23 @@
 server:
-    port: ${port:8080}
+  port: ${port:8888}
 spring:
-    profiles: production
-    application:
-        name: adnan-ataya
-    devtools:
-        restart:
-            exclude: static/**
-    data:
-        mongodb:
-          host: 192.168.99.100
-          port: 27017
-          database: microservices
-          username: micro
-          password: micro
-    autoconfigure:
-        exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoCon
+  application:
+    name: adnan-ataya
+  devtools:
+    restart:
+      exclude: static/**
 logging:
-    pattern:
-        console: "%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"
-        file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
-    level:
-        org.springframework.web: DEBUG
-    file: app.log
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"
+    file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.web: DEBUG
 management:
-    security:
-        enabled: false
+  security:
+    enabled: false
+  endpoints:
+    metrics:
+      enabled: true
+    web:
+      exposure:
+        include: "*"
